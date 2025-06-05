@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Taiwan Research Project</title>
+  <link rel="icon" type="image/x-icon" href="favicon.ico"/>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    html, body {
+      font-family: 'Poppins', sans-serif;
+      transition: background 0.5s, color 0.5s;
+    }
+
+    .fade-in-section {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s ease-out;
+    }
+
+    .fade-in-section.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(100vh) rotate(360deg);
+      }
+    }
+
+    .leaf {
+      position: fixed;
+      top: -10px;
+      pointer-events: auto;
+      animation: fall linear infinite;
+      opacity: 0.6;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    .bg-hero {
+      background-image: url('taiwan-landscape.png');
+      background-attachment: fixed;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .dark body {
+      background-color: #111827;
+      color: white;
+    }
+
+    .dark .bg-white {
+      background-color: #1f2937;
+    }
+
+    .dark .text-black {
+      color: white;
+    }
+
+    .dark .bg-yellow-300 {
+      background-color: #fbbf24;
+    }
+
+    .dropdown-menu {
+      position: absolute;
+      right: 0;
+      top: 2.5rem;
+      background: white;
+      border: 1px solid #ccc;
+      border-radius: 0.75rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      width: 140px;
+      display: none;
+      z-index: 50;
+      padding: 0.25rem 0;
+      font-size: 0.875rem;
+    }
+
+    .dropdown-menu {
+      background: #1f2937;
+      color: white;
+      border-color: #374151;
+    }
+
+    .dropdown-menu button {
+      width: 100%;
+      text-align: left;
+      padding: 0.5rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      transition: background 0.2s ease;
+      border-radius: 0;
+    }
+
+    .dropdown-menu button[data-theme="light"]:hover {
+      background-color: #ffe8b3;
+    }
+    .dropdown-menu button[data-theme="dark"]:hover {
+      background-color: #2d3748;
+    }
+    .dropdown-menu button[data-theme="auto"]:hover {
+      background-color: #d1d5db;
+    }
+
+    .dropdown-menu button.active {
+      background-color: #ffe4b5
+      font-weight: 600;
+    }
+
+    .dropdown-menu button svg:last-child {
+      display: none;
+      margin-left: auto;
+    }
+
+    .dropdown-menu button.active svg:last-child {
+      display: inline;
+    }
+
+    .icon-button {
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      padding: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 1.25rem;
+    }
+
+    .icon-button svg {
+      width: 1rem;
+      height: 1rem;
+    }
+  </style>
+</head>
+<body class="bg-white text-gray-900">
+
+  <!-- Navigation -->
+  <nav class="bg-gradient-to-r from-yellow-400 to-red-400 text-white shadow-md py-4">
+    <div class="container mx-auto flex justify-between items-center px-6 relative">
+      <div class="flex items-center">
+        <img src="logo.png" alt="Taiwan Research Logo" class="h-10 mr-3">
+        <h1 class="text-xl font-bold tracking-wide">Taiwan Research Project</h1>
+      </div>
+      <ul class="flex space-x-6 text-lg">
+        <li><a href="#home" class="hover:text-yellow-100 transition">Home</a></li>
+        <li><a href="#research" class="hover:text-yellow-100 transition">Research</a></li>
+        <li><a href="#about" class="hover:text-yellow-100 transition">About</a></li>
+        <li><a href="#contact" class="hover:text-yellow-100 transition">Contact</a></li>
+      </ul>
+
+      <!-- Theme Dropdown -->
+      <div class="relative ml-6" id="themeDropdown">
+        <button id="themeToggle" class="icon-button" aria-expanded="false" aria-label="Toggle theme">
+          <span id="themeIcon">☀️</span>
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.293l3.71-4.06a.75.75 0 111.08 1.04l-4.25 4.65a.75.75 0 01-1.08 0L5.21 8.27a.75.75 0 01.02-1.06z" clip-rule="evenodd"/>
+          </svg>
+        </button>
+        <div class="dropdown-menu" id="themeMenu">
+          <button data-theme="light">
+            ☀️ Light
+            <svg>✔</svg>
+          </button>
+          <button data-theme="dark">
+            🌙 Dark
+            <svg>✔</svg>
+          </button>
+          <button data-theme="auto">
+            💻 Auto
+            <svg>✔</svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Header -->
+  <header id="home" class="relative bg-hero min-h-screen pt-32 pb-20 flex items-center justify-center text-center">
+    <div class="z-10 text-white px-4">
+      <h2 class="text-5xl font-extrabold drop-shadow-lg mb-4">Exploring Taiwan's Natural Heritage</h2>
+      <p class="text-xl mb-8 drop-shadow-sm">A Comprehensive Research Journey</p>
+      <a href="#research" class="bg-yellow-300 text-black px-8 py-4 rounded-full font-semibold text-lg shadow-lg hover:bg-yellow-400 transition duration-300">
+        Discover Our Research
+      </a>
+    </div>
+    <div class="absolute inset-0 bg-black opacity-40"></div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container mx-auto px-6 py-20 space-y-24">
+    <section id="research" class="fade-in-section grid md:grid-cols-3 gap-10">
+      <div class="bg-white rounded-2xl shadow-lg p-6 hover:shadow-2xl transform hover:-translate-y-1 transition">
+        <h3 class="text-2xl font-bold text-yellow-600 mb-2">🌲 Taiwania Cryptomerioides</h3>
+        <p>Detailed research on this unique Taiwanese tree species and its ecological significance.</p>
+      </div>
+      <div class="bg-white rounded-2xl shadow-lg p-6 hover:shadow-2xl transform hover:-translate-y-1 transition">
+        <h3 class="text-2xl font-bold text-green-600 mb-2">🌱 Ecological Studies</h3>
+        <p>Comprehensive research in Taiwan's vibrant and diverse ecosystems and natural habitats.</p>
+      </div>
+      <div class="bg-white rounded-2xl shadow-lg p-6 hover:shadow-2xl transform hover:-translate-y-1 transition">
+        <h3 class="text-2xl font-bold text-indigo-600 mb-2">🦋 Biodiversity</h3>
+        <p>Exploring the rich biodiversity across Taiwan's forested mountains and coastal plains.</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white text-center py-6">
+    <p>&copy; 2023 Taiwan Research Project. All Rights Reserved.</p>
+  </footer>
+
+  <!-- Script -->
+  <script>
+    // Blossom
+    const sound = new Audio("mail-sent.mp3");
+    sound.volume = 0.3;
+
+    function createLeaf() {
+      const leaf = document.createElement("div");
+      leaf.className = "leaf";
+      leaf.textContent = "🌸";
+      leaf.style.left = Math.random() * 100 + "vw";
+      leaf.style.animationDuration = (Math.random() * 10 + 5) + "s";
+      leaf.onclick = () => sound.cloneNode().play();
+      document.body.appendChild(leaf);
+      setTimeout(() => leaf.remove(), 15000);
+    }
+    setInterval(createLeaf, 700);
+
+    // Scroll fade
+    const faders = document.querySelectorAll('.fade-in-section');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    faders.forEach(f => observer.observe(f));
+
+    // Theme switcher
+    const html = document.documentElement;
+    const themeIcon = document.getElementById("themeIcon");
+    const themeToggle = document.getElementById("themeToggle");
+    const themeMenu = document.getElementById("themeMenu");
+    const dropdown = document.getElementById("themeDropdown");
+    const buttons = themeMenu.querySelectorAll("button");
+
+    function setTheme(theme) {
+      localStorage.setItem("theme", theme);
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      if (theme === "dark" || (theme === "auto" && prefersDark)) {
+        html.classList.add("dark");
+        themeIcon.textContent = "🌙";
+      } else {
+        html.classList.remove("dark");
+        themeIcon.textContent = "☀️";
+      }
+
+      buttons.forEach(btn => {
+        btn.classList.toggle("active", btn.dataset.theme === theme);
+      });
+    }
+
+    buttons.forEach(btn => {
+      btn.onclick = () => {
+        setTheme(btn.dataset.theme);
+        themeMenu.style.display = "none";
+        themeToggle.setAttribute("aria-expanded", "false");
+      };
+    });
+
+    themeToggle.onclick = (e) => {
+      e.stopPropagation();
+      const isOpen = themeMenu.style.display === "block";
+      themeMenu.style.display = isOpen ? "none" : "block";
+      themeToggle.setAttribute("aria-expanded", String(!isOpen));
+    };
+
+    document.addEventListener("click", e => {
+      if (!dropdown.contains(e.target)) {
+        themeMenu.style.display = "none";
+        themeToggle.setAttribute("aria-expanded", "false");
+      }
+    });
+
+    // Init
+    setTheme(localStorage.getItem("theme") || "auto");
+  </script>
+</body>
+</html>
