@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Zoologist - Taiwan Research Project</title>
+  <link rel="icon" type="image/x-icon" href="/images/favicon.ico"/>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    html, body {
+      font-family: 'Poppins', sans-serif;
+      transition: background 0.5s, color 0.5s;
+    }
+
+    .fade-in-section {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s ease-out;
+    }
+
+    .fade-in-section.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(100vh) rotate(360deg);
+      }
+    }
+
+    .leaf {
+      position: fixed;
+      top: -10px;
+      pointer-events: auto;
+      animation: fall linear infinite;
+      opacity: 0.6;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    .bg-hero {
+      background-image: url('/images/taiwan-landscape.png');
+      background-attachment: fixed;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .dark body {
+      background-color: #111827;
+      color: white;
+    }
+
+    .dark .bg-white {
+      background-color: #1f2937;
+    }
+
+    .dark .text-black {
+      color: white;
+    }
+
+    .dark .bg-yellow-300 {
+      background-color: #fbbf24;
+    }
+
+    .dropdown-menu {
+      position: absolute;
+      right: 0;
+      top: 2.5rem;
+      background: white;
+      border: 1px solid #ccc;
+      border-radius: 0.75rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      width: 140px;
+      display: none;
+      z-index: 50;
+      padding: 0.25rem 0;
+      font-size: 0.875rem;
+    }
+
+    .dropdown-menu {
+      background: #1f2937;
+      color: white;
+      border-color: #374151;
+    }
+
+    .dropdown-menu button {
+      width: 100%;
+      text-align: left;
+      padding: 0.5rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      transition: background 0.2s ease;
+      border-radius: 0;
+    }
+
+    .dropdown-menu button[data-theme="light"]:hover {
+      background-color: #ffe8b3;
+    }
+    .dropdown-menu button[data-theme="dark"]:hover {
+      background-color: #2d3748;
+    }
+    .dropdown-menu button[data-theme="auto"]:hover {
+      background-color: #d1d5db;
+    }
+
+    .dropdown-menu button.active {
+      background-color: #ffe4b5
+      font-weight: 600;
+    }
+
+    .dropdown-menu button svg:last-child {
+      display: none;
+      margin-left: auto;
+    }
+
+    .dropdown-menu button.active svg:last-child {
+      display: inline;
+    }
+
+    .icon-button {
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      padding: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 1.25rem;
+    }
+
+    .icon-button svg {
+      width: 1rem;
+      height: 1rem;
+    }
+  </style>
+</head>
+<body class="bg-white text-gray-900">
+
+  <!-- Navigation -->
+  <nav class="bg-gradient-to-r from-yellow-400 to-red-400 text-white shadow-md py-4">
+    <div class="container mx-auto flex justify-between items-center px-6 relative">
+      <div class="flex items-center">
+        <img src="/images/logo.png" alt="Taiwan Research Logo" class="h-10 mr-3">
+        <h1 class="text-xl font-bold tracking-wide">Taiwan Research Project</h1>
+      </div>
+      <ul class="flex space-x-6 text-lg">
+        <li><a href="#home" class="hover:text-yellow-100 transition">Home</a></li>
+        <li><a href="#research" class="hover:text-yellow-100 transition">Research</a></li>
+        <li><a href="#about" class="hover:text-yellow-100 transition">About</a></li>
+        <li><a href="#contact" class="hover:text-yellow-100 transition">Contact</a></li>
+      </ul>
+
+      <!-- Theme Dropdown -->
+      <div class="relative ml-6" id="themeDropdown">
+        <button id="themeToggle" class="icon-button" aria-expanded="false" aria-label="Toggle theme">
+          <span id="themeIcon">☀️</span>
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.293l3.71-4.06a.75.75 0 111.08 1.04l-4.25 4.65a.75.75 0 01-1.08 0L5.21 8.27a.75.75 0 01.02-1.06z" clip-rule="evenodd"/>
+          </svg>
+        </button>
+        <div class="dropdown-menu" id="themeMenu">
+          <button data-theme="light">
+            ☀️ Light
+            <svg>✔</svg>
+          </button>
+          <button data-theme="dark">
+            🌙 Dark
+            <svg>✔</svg>
+          </button>
+          <button data-theme="auto">
+            💻 Auto
+            <svg>✔</svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Header -->
+  <header id="home" class="relative bg-hero min-h-screen pt-32 pb-20 flex items-center justify-center text-center">
+    <div class="z-10 text-white px-4">
+      <h2 class="text-5xl font-extrabold drop-shadow-lg mb-4">Taiwan's Animals</h2>
+      <p class="text-xl mb-8 drop-shadow-sm">Discover the beauty of Taiwan's fauna.</p>
+    </div>
+    <div class="absolute inset-0 bg-black opacity-40"></div>
+  </header>
+
+<main class="container mx-auto px-6 py-10 space-y-10">
+
+  <!-- Green Island -->
+  <section class="bg-blue-900 text-white rounded-2xl p-6 flex flex-col md:flex-row items-center gap-6">
+    <img src="images/geography-images/Green%20Island.png" alt="Green Island" class="w-full max-w-xs rounded-lg" />
+    <div>
+      <h2 class="text-3xl font-bold mb-2">Green Island</h2>
+      <p>Green Island is a volcanic island located off Taiwan's east coast. Once home to a political prison in the early 1900s, it is now a popular destination for snorkeling, scuba diving, and exploring coastal nature trails.</p>
+    </div>
+  </section>
+
+  <!-- Sun Moon Lake -->
+  <section class="bg-blue-900 text-white rounded-2xl p-6 flex flex-col md:flex-row items-center gap-6">
+    <img src="images/geography-images/Sun%20Moon%20Lake.png" alt="Sun Moon Lake" class="w-full max-w-xs rounded-lg" />
+    <div>
+      <h2 class="text-3xl font-bold mb-2">Sun Moon Lake</h2>
+      <p>Surrounded by mountains, Sun Moon Lake sits 2,400 feet above sea level. It’s Taiwan’s largest lake, known for its scenic views, cultural festivals, and annual open-water swimming events.</p>
+    </div>
+  </section>
+
+  <!-- Taipei 101 -->
+  <section class="bg-blue-900 text-white rounded-2xl p-6 flex flex-col md:flex-row items-center gap-6">
+    <img src="images/geography-images/Taipei%20101.png" alt="Taipei 101" class="w-full max-w-xs rounded-lg" />
+    <div>
+      <h2 class="text-3xl font-bold mb-2">Taipei 101</h2>
+      <p>This iconic skyscraper reaches 101 stories high and dominates the Taipei skyline. Inside, you'll find luxury stores, restaurants, and one of the fastest elevators in the world.</p>
+    </div>
+  </section>
+
+  <!-- Yushan Range -->
+  <section class="bg-blue-900 text-white rounded-2xl p-6 flex flex-col md:flex-row items-center gap-6">
+    <img src="images/geography-images/Yushan%20Range.png" alt="Yushan Range" class="w-full max-w-xs rounded-lg" />
+    <div>
+      <h2 class="text-3xl font-bold mb-2">Yushan Range</h2>
+      <p>Yushan, or Jade Mountain, is Taiwan’s highest peak at over 13,000 feet. Sixteen peaks in this range rise above 10,000 feet, offering dramatic alpine scenery.</p>
+    </div>
+  </section>
+
+  <!-- Shifen Waterfall -->
+  <section class="bg-blue-900 text-white rounded-2xl p-6 flex flex-col md:flex-row items-center gap-6">
+    <img src="images/geography-images/Shifen%20Waterfall.png" alt="Shifen Waterfall" class="w-full max-w-xs rounded-lg" />
+    <div>
+      <h2 class="text-3xl font-bold mb-2">Shifen Waterfall</h2>
+      <p>Shifen Waterfall is Taiwan’s most famous cascade, stretching 40 meters wide and 20 meters tall. Often called the "Little Niagara," it draws visitors for its natural beauty and nearby lantern festivals.</p>
+    </div>
+  </section>
+
+  <!-- Xueshan Range -->
+  <section class="bg-blue-900 text-white rounded-2xl p-6 flex flex-col md:flex-row items-center gap-6">
+    <img src="images/geography-images/Xueshan%20Range.png" alt="Xueshan Range" class="w-full max-w-xs rounded-lg" />
+    <div>
+      <h2 class="text-3xl font-bold mb-2">Xueshan Range</h2>
+      <p>The Xueshan Range spans roughly 161 miles and includes Taiwan’s second tallest peak. Its rugged trails are a favorite for experienced hikers and nature lovers.</p>
+    </div>
+  </section>
+
+  <!-- Taroko Gorge -->
+  <section class="bg-blue-900 text-white rounded-2xl p-6 flex flex-col md:flex-row items-center gap-6">
+    <img src="images/geography-images/Taoko%20Gorge.png" alt="Taroko Gorge" class="w-full max-w-xs rounded-lg" />
+    <div>
+      <h2 class="text-3xl font-bold mb-2">Taroko Gorge</h2>
+      <p>Part of a stunning national park, Taroko Gorge features towering cliffs, marble canyons, and mountain peaks that reach up to 9,800 feet. The park covers over 360 square miles of protected land.</p>
+    </div>
+  </section>
+
+  <!-- Longshan Temple, Wanhua -->
+  <section class="bg-blue-900 text-white rounded-2xl p-6 flex flex-col md:flex-row items-center gap-6">
+    <img src="images/geography-images/Longshan%20Temple,%20Wanhua.png" alt="Longshan Temple, Wanhua" class="w-full max-w-xs rounded-lg" />
+    <div>
+      <h2 class="text-3xl font-bold mb-2">Longshan Temple, Wanhua</h2>
+      <p>Originally built in 1738 and rebuilt in 1919, Longshan Temple is a major cultural site in Taipei. It showcases traditional art and architecture, making it a spiritual and historical landmark.</p>
+    </div>
+  </section>
+
+  <!-- Taipei Zoo -->
+  <section class="bg-blue-900 text-white rounded-2xl p-6 flex flex-col md:flex-row items-center gap-6">
+    <img src="images/geography-images/Taipei%20Zoo.png" alt="Taipei Zoo" class="w-full max-w-xs rounded-lg" />
+    <div>
+      <h2 class="text-3xl font-bold mb-2">Taipei Zoo</h2>
+      <p>Known as the largest zoo in Asia, Taipei Zoo is a top destination to learn about conservation and observe both local and global species up close.</p>
+    </div>
+  </section>
+
+  <!-- National Palace Museum -->
+  <section class="bg-blue-900 text-white rounded-2xl p-6 flex flex-col md:flex-row items-center gap-6">
+    <img src="images/geography-images/National%20Palace%20Museum.png" alt="National Palace Museum" class="w-full max-w-xs rounded-lg" />
+    <div>
+      <h2 class="text-3xl font-bold mb-2">National Palace Museum</h2>
+      <p>This museum houses one of the world’s largest collections of Chinese art and historical artifacts. It’s also among Taiwan’s most visited cultural institutions.</p>
+    </div>
+  </section>
+
+  <!-- Maokong Gondola -->
+  <section class="bg-blue-900 text-white rounded-2xl p-6 flex flex-col md:flex-row items-center gap-6">
+    <img src="images/geography-images/Maokong%20Gondola.png" alt="Maokong Gondola" class="w-full max-w-xs rounded-lg" />
+    <div>
+      <h2 class="text-3xl font-bold mb-2">Maokong Gondola</h2>
+      <p>For just four dollars, visitors can enjoy a one-way gondola ride with scenic views of Taipei’s mountains and cityscape. The ride is a relaxing way to experience the landscape from above.</p>
+    </div>
+  </section>
+
+</main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white text-center py-6">
+    <p>&copy; 2023 Taiwan Research Project. All Rights Reserved.</p>
+  </footer>
+
+  <!-- Script -->
+  <script>
+    // Blossom
+    const sound = new Audio("mail-sent.mp3");
+    sound.volume = 0.3;
+
+    function createLeaf() {
+      const leaf = document.createElement("div");
+      leaf.className = "leaf";
+      leaf.textContent = "🌸";
+      leaf.style.left = Math.random() * 100 + "vw";
+      leaf.style.animationDuration = (Math.random() * 10 + 5) + "s";
+      leaf.onclick = () => sound.cloneNode().play();
+      document.body.appendChild(leaf);
+      setTimeout(() => leaf.remove(), 15000);
+    }
+    setInterval(createLeaf, 700);
+
+    // Scroll fade
+    const faders = document.querySelectorAll('.fade-in-section');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    faders.forEach(f => observer.observe(f));
+
+    // Theme switcher
+    const html = document.documentElement;
+    const themeIcon = document.getElementById("themeIcon");
+    const themeToggle = document.getElementById("themeToggle");
+    const themeMenu = document.getElementById("themeMenu");
+    const dropdown = document.getElementById("themeDropdown");
+    const buttons = themeMenu.querySelectorAll("button");
+
+    function setTheme(theme) {
+      localStorage.setItem("theme", theme);
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      if (theme === "dark" || (theme === "auto" && prefersDark)) {
+        html.classList.add("dark");
+        themeIcon.textContent = "🌙";
+      } else {
+        html.classList.remove("dark");
+        themeIcon.textContent = "☀️";
+      }
+
+      buttons.forEach(btn => {
+        btn.classList.toggle("active", btn.dataset.theme === theme);
+      });
+    }
+
+    buttons.forEach(btn => {
+      btn.onclick = () => {
+        setTheme(btn.dataset.theme);
+        themeMenu.style.display = "none";
+        themeToggle.setAttribute("aria-expanded", "false");
+      };
+    });
+
+    themeToggle.onclick = (e) => {
+      e.stopPropagation();
+      const isOpen = themeMenu.style.display === "block";
+      themeMenu.style.display = isOpen ? "none" : "block";
+      themeToggle.setAttribute("aria-expanded", String(!isOpen));
+    };
+
+    document.addEventListener("click", e => {
+      if (!dropdown.contains(e.target)) {
+        themeMenu.style.display = "none";
+        themeToggle.setAttribute("aria-expanded", "false");
+      }
+    });
+
+    // Init
+    setTheme(localStorage.getItem("theme") || "auto");
+  </script>
+</body>
+</html>
