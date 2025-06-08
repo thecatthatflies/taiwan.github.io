@@ -13,6 +13,55 @@
       background-color: #111827;
       color: white;
     }
+    
+    .carousel-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .carousel-track {
+      display: flex;
+      transition: transform 0.5s ease;
+      width: 100%;
+    }
+
+    .carousel-card {
+      min-width: 100%;
+      box-sizing: border-box;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .carousel-card img {
+      margin: 0 auto 1rem;
+      border-radius: 1rem;
+      max-height: 300px;
+    }
+
+    .carousel-button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 2rem;
+      background: rgba(0, 0, 0, 0.5);
+      border: none;
+      color: white;
+      cursor: pointer;
+      z-index: 10;
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+    }
+
+    .carousel-button.prev {
+      left: 1rem;
+    }
+
+    .carousel-button.next {
+      right: 1rem;
+    }
 
     .fade-in-section {
       opacity: 0;
@@ -78,94 +127,64 @@
     <div class="absolute inset-0 bg-black opacity-40"></div>
   </header>
 
-<main class="container mx-auto px-6 py-12 space-y-10 dark text-white bg-gray-900">
-
-  <h2 class="text-4xl font-bold text-yellow-300 text-center mb-6">Taiwan’s Historical Timeline</h2>
-  <p class="text-center text-lg text-gray-300 max-w-2xl mx-auto mb-10">Explore the key moments that shaped Taiwan, from ancient settlements to modern democracy. Click through the milestones to learn more.</p>
-
-  <div class="relative">
-    <div class="flex overflow-x-auto snap-x snap-mandatory space-x-6 pb-4">
-
-      <!-- Event 1 -->
-      <div class="snap-center shrink-0 w-80 bg-gray-800 rounded-xl shadow-lg p-4">
-        <img src="images/historian-images/Indigenous Peoples Settlement.png" alt="Indigenous Peoples Settlement" class="rounded-lg mb-3" />
-        <h3 class="text-2xl font-bold text-yellow-300 mb-1">Ancient Indigenous Settlement</h3>
-        <p class="text-gray-300 text-sm">Taiwan’s history begins with Austronesian-speaking peoples who settled the island over 6,000 years ago. Their descendants remain as Taiwan’s Indigenous tribes today.</p>
+  <main class="container mx-auto px-4 py-10">
+    <div class="carousel-container">
+      <button class="carousel-button prev" onclick="scrollSlide(-1)">&#10094;</button>
+      <div class="carousel-track" id="carouselTrack">
+        <div class="carousel-card">
+          <img src="images/tour-guide-images/Taipei 101.png" alt="Taipei 101 skyscraper">
+          <h3 class="text-2xl font-bold mb-2">Taipei 101</h3>
+          <p>Once the world’s tallest building, Taipei 101 is a symbol of modern Taiwan. Its bamboo-inspired design offers panoramic views from its observation deck.</p>
+        </div>
+        <div class="carousel-card">
+          <img src="images/tour-guide-images/Taroko Gorge.png" alt="Taroko Gorge view">
+          <h3 class="text-2xl font-bold mb-2">Taroko Gorge</h3>
+          <p>Famous for its dramatic marble cliffs, Taroko Gorge is a breathtaking canyon with hiking trails and scenic beauty in every direction.</p>
+        </div>
+        <div class="carousel-card">
+          <img src="images/tour-guide-images/Chiang Kai-shek Memorial Hall.png" alt="Chiang Kai-shek Memorial">
+          <h3 class="text-2xl font-bold mb-2">Chiang Kai-shek Memorial Hall</h3>
+          <p>This landmark honors Taiwan’s former president and is a cultural site featuring a museum, plaza, and ceremonial guards.</p>
+        </div>
+        <div class="carousel-card">
+          <img src="images/tour-guide-images/Beef Noodle Soup.png" alt="Beef Noodle Soup">
+          <h3 class="text-2xl font-bold mb-2">Beef Noodle Soup</h3>
+          <p>A beloved local dish, beef noodle soup features tender meat, noodles, and rich broth. It’s a staple across Taiwan’s food culture.</p>
+        </div>
+        <div class="carousel-card">
+          <img src="images/tour-guide-images/Pineapple Cakes.png" alt="Pineapple Cakes">
+          <h3 class="text-2xl font-bold mb-2">Pineapple Cakes</h3>
+          <p>These sweet pastries are a symbol of good luck in Taiwan. They’re often gifted and are a popular souvenir among tourists.</p>
+        </div>
+        <div class="carousel-card">
+          <img src="images/tour-guide-images/Pingxi Sky Lantern Festival.png" alt="Pingxi Sky Lantern Festival">
+          <h3 class="text-2xl font-bold mb-2">Pingxi Sky Lantern Festival</h3>
+          <p>During this festival, people release lanterns into the sky with wishes written on them, creating a magical and spiritual atmosphere.</p>
+        </div>
+        <div class="carousel-card">
+          <img src="images/tour-guide-images/Dragon Boat Festival.png" alt="Dragon Boat Festival">
+          <h3 class="text-2xl font-bold mb-2">Dragon Boat Festival</h3>
+          <p>Celebrated with thrilling boat races and rice dumplings (zongzi), this festival honors loyalty and tradition each summer.</p>
+        </div>
+        <div class="carousel-card">
+          <img src="images/tour-guide-images/Alishan Forest Railway.png" alt="Alishan Forest Railway">
+          <h3 class="text-2xl font-bold mb-2">Alishan Forest Railway</h3>
+          <p>This scenic mountain train winds through cloud forests and tea plantations, offering unforgettable views of Taiwan’s interior.</p>
+        </div>
+        <div class="carousel-card">
+          <img src="images/tour-guide-images/Shilin Night Market.png" alt="Shilin Night Market">
+          <h3 class="text-2xl font-bold mb-2">Shilin Night Market</h3>
+          <p>One of the largest and most vibrant night markets in Taiwan, known for street food, games, and souvenirs.</p>
+        </div>
+        <div class="carousel-card">
+          <img src="images/tour-guide-images/Sun Moon Lake Cycling.png" alt="Sun Moon Lake">
+          <h3 class="text-2xl font-bold mb-2">Sun Moon Lake Cycling</h3>
+          <p>Cycle around Taiwan’s scenic Sun Moon Lake, surrounded by temples, mountains, and serene waters.</p>
+        </div>
       </div>
-
-      <!-- Event 2 -->
-      <div class="snap-center shrink-0 w-80 bg-gray-800 rounded-xl shadow-lg p-4">
-        <img src="images/historian-images/Dutch and Spanish Colonization.png" alt="Dutch and Spanish Colonization" class="rounded-lg mb-3" />
-        <h3 class="text-2xl font-bold text-yellow-300 mb-1">Dutch and Spanish Colonization (1624–1662)</h3>
-        <p class="text-gray-300 text-sm">The Dutch and Spanish both established colonial settlements in Taiwan. These early European presences marked the beginning of Taiwan’s global interactions.</p>
-      </div>
-
-      <!-- Event 3 -->
-      <div class="snap-center shrink-0 w-80 bg-gray-800 rounded-xl shadow-lg p-4">
-        <img src="images/historian-images/Koxinga Takes Taiwan.png" alt="Koxinga Takes Taiwan" class="rounded-lg mb-3" />
-        <h3 class="text-2xl font-bold text-yellow-300 mb-1">Koxinga Defeats the Dutch (1662)</h3>
-        <p class="text-gray-300 text-sm">Ming loyalist Koxinga expelled the Dutch and established the Kingdom of Tungning, a short-lived state that made Taiwan a base for Ming resistance.</p>
-      </div>
-
-      <!-- Event 4 -->
-      <div class="snap-center shrink-0 w-80 bg-gray-800 rounded-xl shadow-lg p-4">
-        <img src="images/historian-images/Qing Dynasty Rule Begins.png" alt="Qing Dynasty Rule Begins" class="rounded-lg mb-3" />
-        <h3 class="text-2xl font-bold text-yellow-300 mb-1">Qing Dynasty Rule (1683–1895)</h3>
-        <p class="text-gray-300 text-sm">Taiwan became a part of China’s Qing Empire. Settlers from mainland China brought new culture and agricultural practices to the island.</p>
-      </div>
-
-      <!-- Event 5 -->
-      <div class="snap-center shrink-0 w-80 bg-gray-800 rounded-xl shadow-lg p-4">
-        <img src="images/historian-images/Japanese Colonial Period.png" alt="Japanese Colonial Period" class="rounded-lg mb-3" />
-        <h3 class="text-2xl font-bold text-yellow-300 mb-1">Japanese Rule (1895–1945)</h3>
-        <p class="text-gray-300 text-sm">After the First Sino-Japanese War, Taiwan was ceded to Japan. Infrastructure and public health systems improved, but Japanese rule was strict.</p>
-      </div>
-
-      <!-- Event 6 -->
-      <div class="snap-center shrink-0 w-80 bg-gray-800 rounded-xl shadow-lg p-4">
-        <img src="images/historian-images/Martial Law Imposed.png" alt="Martial Law Imposed" class="rounded-lg mb-3" />
-        <h3 class="text-2xl font-bold text-yellow-300 mb-1">Martial Law Begins (1949)</h3>
-        <p class="text-gray-300 text-sm">After retreating from mainland China, the Kuomintang government imposed martial law on Taiwan, restricting freedoms for decades.</p>
-      </div>
-
-      <!-- Event 7 -->
-      <div class="snap-center shrink-0 w-80 bg-gray-800 rounded-xl shadow-lg p-4">
-        <img src="images/historian-images/228 Incident.png" alt="228 Incident" class="rounded-lg mb-3" />
-        <h3 class="text-2xl font-bold text-yellow-300 mb-1">228 Incident (1947)</h3>
-        <p class="text-gray-300 text-sm">A brutal crackdown on protestors led to the deaths of thousands. The event marked the beginning of Taiwan’s White Terror era.</p>
-      </div>
-
-      <!-- Event 8 -->
-      <div class="snap-center shrink-0 w-80 bg-gray-800 rounded-xl shadow-lg p-4">
-        <img src="images/historian-images/Martial Law Lifted.png" alt="Martial Law Lifted" class="rounded-lg mb-3" />
-        <h3 class="text-2xl font-bold text-yellow-300 mb-1">Martial Law Lifted (1987)</h3>
-        <p class="text-gray-300 text-sm">Martial law officially ended, allowing the growth of civil liberties, democratic reforms, and the emergence of new political voices.</p>
-      </div>
-
-      <!-- Event 9 -->
-      <div class="snap-center shrink-0 w-80 bg-gray-800 rounded-xl shadow-lg p-4">
-        <img src="images/historian-images/First Democratic Election.png" alt="First Democratic Election" class="rounded-lg mb-3" />
-        <h3 class="text-2xl font-bold text-yellow-300 mb-1">First Democratic Election (1996)</h3>
-        <p class="text-gray-300 text-sm">Taiwan held its first direct presidential election, marking a major milestone in its transition to democracy and global recognition.</p>
-      </div>
-
-      <!-- Event 10 -->
-      <div class="snap-center shrink-0 w-80 bg-gray-800 rounded-xl shadow-lg p-4">
-        <img src="images/historian-images/Modern Democratic Taiwan.png" alt="Modern Democratic Taiwan" class="rounded-lg mb-3" />
-        <h3 class="text-2xl font-bold text-yellow-300 mb-1">Modern Taiwan</h3>
-        <p class="text-gray-300 text-sm">Today, Taiwan is a vibrant democracy known for its technology, diverse culture, and complex international status.</p>
-      </div>
-
+      <button class="carousel-button next" onclick="scrollSlide(1)">&#10095;</button>
     </div>
-  </div>
-
-  <!-- Summary Section -->
-  <div class="mt-16 text-center max-w-3xl mx-auto">
-    <h3 class="text-3xl font-semibold text-yellow-300 mb-4">Taiwan’s Story</h3>
-    <p class="text-gray-300">Taiwan’s path from Indigenous roots to colonial rule, and finally to democracy, reflects its resilience and evolution. Each chapter adds depth to the identity of the island and its people.</p>
-  </div>
-
-</main>
+  </main>
 
   <!-- Footer -->
   <footer class="bg-gray-900 text-white text-center py-6">
@@ -174,6 +193,18 @@
 
   <!-- Script -->
   <script>
+    // Carousel
+    let currentIndex = 0;
+    const carouselElement = document.getElementById("carouselTrack");
+    const totalSlides = carouselElement.children.length;
+
+    function scrollSlide(direction) {
+      currentIndex += direction;
+      if (currentIndex < 0) currentIndex = totalSlides - 1;
+      if (currentIndex >= totalSlides) currentIndex = 0;
+      carouselElement.style.transform = `translateX(-${currentIndex * 100}%)`;
+    }
+    
     // Blossom
     const sound = new Audio("mail-sent.mp3");
     sound.volume = 0.3;
