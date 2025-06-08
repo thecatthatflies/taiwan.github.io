@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Zoologist - Taiwan Research Project</title>
+  <title>Artist - Taiwan Research Project</title>
   <link rel="icon" type="image/x-icon" href="/images/favicon.ico"/>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet"/>
@@ -155,30 +155,6 @@
         <li><a href="#about" class="hover:text-yellow-100 transition">About</a></li>
         <li><a href="#contact" class="hover:text-yellow-100 transition">Contact</a></li>
       </ul>
-
-      <!-- Theme Dropdown -->
-      <div class="relative ml-6" id="themeDropdown">
-        <button id="themeToggle" class="icon-button" aria-expanded="false" aria-label="Toggle theme">
-          <span id="themeIcon">☀️</span>
-          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-            <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.293l3.71-4.06a.75.75 0 111.08 1.04l-4.25 4.65a.75.75 0 01-1.08 0L5.21 8.27a.75.75 0 01.02-1.06z" clip-rule="evenodd"/>
-          </svg>
-        </button>
-        <div class="dropdown-menu" id="themeMenu">
-          <button data-theme="light">
-            ☀️ Light
-            <svg>✔</svg>
-          </button>
-          <button data-theme="dark">
-            🌙 Dark
-            <svg>✔</svg>
-          </button>
-          <button data-theme="auto">
-            💻 Auto
-            <svg>✔</svg>
-          </button>
-        </div>
-      </div>
     </div>
   </nav>
 
@@ -259,11 +235,38 @@
     </div>
   </section>
 
+  <!-- Traditional Lantern Craft -->
+  <section class="bg-blue-900 text-white rounded-2xl p-6 flex flex-col md:flex-row items-center gap-6">
+    <img src="images/artist-images/Lantern Craft.png" alt="Lantern Craft" class="w-full max-w-xs rounded-lg" />
+    <div>
+      <h2 class="text-3xl font-bold mb-2">Traditional Lantern Craft</h2>
+      <p>Lantern-making is both an art and tradition in Taiwan, especially during festivals like the Lantern Festival. Each lantern is crafted with care using colored paper and bamboo, often symbolizing hope, prosperity, or ancestral respect.</p>
+    </div>
+  </section>
+
+  <!-- Paper Cutting Art -->
+  <section class="bg-blue-900 text-white rounded-2xl p-6 flex flex-col md:flex-row items-center gap-6">
+    <img src="images/artist-images/Paper Cutting.png" alt="Paper Cutting Art" class="w-full max-w-xs rounded-lg" />
+    <div>
+      <h2 class="text-3xl font-bold mb-2">Paper Cutting Art</h2>
+      <p>This folk art form involves folding and carving paper into symmetrical, meaningful shapes. Popular during holidays, these designs decorate homes and temples, often depicting animals, floral motifs, or Chinese characters for blessings.</p>
+    </div>
+  </section>
+
+  <!-- Bamboo Weaving -->
+  <section class="bg-blue-900 text-white rounded-2xl p-6 flex flex-col md:flex-row items-center gap-6">
+    <img src="images/artist-images/Bamboo Weaving.png" alt="Bamboo Weaving" class="w-full max-w-xs rounded-lg" />
+    <div>
+      <h2 class="text-3xl font-bold mb-2">Bamboo Weaving</h2>
+      <p>Skilled artisans in rural Taiwan have long used bamboo to weave baskets, hats, and household items. This eco-friendly craft requires patience and precision, showcasing Taiwan’s deep connection to its natural resources.</p>
+    </div>
+  </section>
+  
 </main>
 
   <!-- Footer -->
   <footer class="bg-gray-900 text-white text-center py-6">
-    <p>&copy; 2023 Taiwan Research Project. All Rights Reserved.</p>
+    <p>&copy; 2025 Taiwan Research Project. All Rights Reserved.</p>
   </footer>
 
   <!-- Script -->
@@ -296,53 +299,7 @@
     }, { threshold: 0.1 });
 
     faders.forEach(f => observer.observe(f));
-
-    // Theme switcher
-    const html = document.documentElement;
-    const themeIcon = document.getElementById("themeIcon");
-    const themeToggle = document.getElementById("themeToggle");
-    const themeMenu = document.getElementById("themeMenu");
-    const dropdown = document.getElementById("themeDropdown");
-    const buttons = themeMenu.querySelectorAll("button");
-
-    function setTheme(theme) {
-      localStorage.setItem("theme", theme);
-      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-      if (theme === "dark" || (theme === "auto" && prefersDark)) {
-        html.classList.add("dark");
-        themeIcon.textContent = "🌙";
-      } else {
-        html.classList.remove("dark");
-        themeIcon.textContent = "☀️";
-      }
-
-      buttons.forEach(btn => {
-        btn.classList.toggle("active", btn.dataset.theme === theme);
-      });
-    }
-
-    buttons.forEach(btn => {
-      btn.onclick = () => {
-        setTheme(btn.dataset.theme);
-        themeMenu.style.display = "none";
-        themeToggle.setAttribute("aria-expanded", "false");
-      };
-    });
-
-    themeToggle.onclick = (e) => {
-      e.stopPropagation();
-      const isOpen = themeMenu.style.display === "block";
-      themeMenu.style.display = isOpen ? "none" : "block";
-      themeToggle.setAttribute("aria-expanded", String(!isOpen));
-    };
-
-    document.addEventListener("click", e => {
-      if (!dropdown.contains(e.target)) {
-        themeMenu.style.display = "none";
-        themeToggle.setAttribute("aria-expanded", "false");
-      }
-    });
-
+    
     // Init
     setTheme(localStorage.getItem("theme") || "auto");
   </script>
