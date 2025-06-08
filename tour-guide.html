@@ -208,53 +208,7 @@
     }, { threshold: 0.1 });
 
     faders.forEach(f => observer.observe(f));
-
-    // Theme switcher
-    const html = document.documentElement;
-    const themeIcon = document.getElementById("themeIcon");
-    const themeToggle = document.getElementById("themeToggle");
-    const themeMenu = document.getElementById("themeMenu");
-    const dropdown = document.getElementById("themeDropdown");
-    const buttons = themeMenu.querySelectorAll("button");
-
-    function setTheme(theme) {
-      localStorage.setItem("theme", theme);
-      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-      if (theme === "dark" || (theme === "auto" && prefersDark)) {
-        html.classList.add("dark");
-        themeIcon.textContent = "🌙";
-      } else {
-        html.classList.remove("dark");
-        themeIcon.textContent = "☀️";
-      }
-
-      buttons.forEach(btn => {
-        btn.classList.toggle("active", btn.dataset.theme === theme);
-      });
-    }
-
-    buttons.forEach(btn => {
-      btn.onclick = () => {
-        setTheme(btn.dataset.theme);
-        themeMenu.style.display = "none";
-        themeToggle.setAttribute("aria-expanded", "false");
-      };
-    });
-
-    themeToggle.onclick = (e) => {
-      e.stopPropagation();
-      const isOpen = themeMenu.style.display === "block";
-      themeMenu.style.display = isOpen ? "none" : "block";
-      themeToggle.setAttribute("aria-expanded", String(!isOpen));
-    };
-
-    document.addEventListener("click", e => {
-      if (!dropdown.contains(e.target)) {
-        themeMenu.style.display = "none";
-        themeToggle.setAttribute("aria-expanded", "false");
-      }
-    });
-
+    
     // Init
     setTheme(localStorage.getItem("theme") || "auto");
   </script>
