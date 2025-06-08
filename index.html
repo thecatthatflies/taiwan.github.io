@@ -3,14 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Zoologist - Taiwan Research Project</title>
+  <title>Home - Taiwan Research Project</title>
   <link rel="icon" type="image/x-icon" href="/images/favicon.ico"/>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet"/>
   <style>
     html, body {
       font-family: 'Poppins', sans-serif;
-      transition: background 0.5s, color 0.5s;
+      background-color: #111827;
+      color: white;
     }
 
     .fade-in-section {
@@ -46,98 +47,6 @@
       background-size: cover;
       background-position: center;
     }
-
-    .dark body {
-      background-color: #111827;
-      color: white;
-    }
-
-    .dark .bg-white {
-      background-color: #1f2937;
-    }
-
-    .dark .text-black {
-      color: white;
-    }
-
-    .dark .bg-yellow-300 {
-      background-color: #fbbf24;
-    }
-
-    .dropdown-menu {
-      position: absolute;
-      right: 0;
-      top: 2.5rem;
-      background: white;
-      border: 1px solid #ccc;
-      border-radius: 0.75rem;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-      width: 140px;
-      display: none;
-      z-index: 50;
-      padding: 0.25rem 0;
-      font-size: 0.875rem;
-    }
-
-    .dropdown-menu {
-      background: #1f2937;
-      color: white;
-      border-color: #374151;
-    }
-
-    .dropdown-menu button {
-      width: 100%;
-      text-align: left;
-      padding: 0.5rem 1rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      border: none;
-      background: transparent;
-      cursor: pointer;
-      transition: background 0.2s ease;
-      border-radius: 0;
-    }
-
-    .dropdown-menu button[data-theme="light"]:hover {
-      background-color: #ffe8b3;
-    }
-    .dropdown-menu button[data-theme="dark"]:hover {
-      background-color: #2d3748;
-    }
-    .dropdown-menu button[data-theme="auto"]:hover {
-      background-color: #d1d5db;
-    }
-
-    .dropdown-menu button.active {
-      background-color: #ffe4b5
-      font-weight: 600;
-    }
-
-    .dropdown-menu button svg:last-child {
-      display: none;
-      margin-left: auto;
-    }
-
-    .dropdown-menu button.active svg:last-child {
-      display: inline;
-    }
-
-    .icon-button {
-      background: transparent;
-      border: none;
-      cursor: pointer;
-      padding: 0.5rem;
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-      font-size: 1.25rem;
-    }
-
-    .icon-button svg {
-      width: 1rem;
-      height: 1rem;
-    }
   </style>
 </head>
 <body class="bg-white text-gray-900">
@@ -150,10 +59,13 @@
         <h1 class="text-xl font-bold tracking-wide">Taiwan Research Project</h1>
       </div>
       <ul class="flex space-x-6 text-lg">
-        <li><a href="#home" class="hover:text-yellow-100 transition">Home</a></li>
-        <li><a href="#research" class="hover:text-yellow-100 transition">Research</a></li>
-        <li><a href="#about" class="hover:text-yellow-100 transition">About</a></li>
-        <li><a href="#contact" class="hover:text-yellow-100 transition">Contact</a></li>
+        <li><a href="index.html" class="hover:text-yellow-100 transition">Home</a></li>
+        <li><a href="about.html" class="hover:text-yellow-100 transition">About Us</a></li>
+        <li><a href="zoologist.html" class="hover:text-yellow-100 transition">Zoologist</a></li>
+        <li><a href="geographer.html" class="hover:text-yellow-100 transition">Geographer</a></li>
+        <li><a href="artist.html" class="hover:text-yellow-100 transition">Artist</a></li>
+        <li><a href="tour-guide.html" class="hover:text-yellow-100 transition">Tour Guide</a></li>
+        <li><a href="historian.html" class="hover:text-yellow-100 transition">Historian</a></li>
       </ul>
     </div>
   </nav>
@@ -172,7 +84,7 @@
 
   <!-- Footer -->
   <footer class="bg-gray-900 text-white text-center py-6">
-    <p>&copy; 2023 Taiwan Research Project. All Rights Reserved.</p>
+    <p>&copy; 2025 Taiwan Research Project. All Rights Reserved.</p>
   </footer>
 
   <!-- Script -->
@@ -205,52 +117,6 @@
     }, { threshold: 0.1 });
 
     faders.forEach(f => observer.observe(f));
-
-    // Theme switcher
-    const html = document.documentElement;
-    const themeIcon = document.getElementById("themeIcon");
-    const themeToggle = document.getElementById("themeToggle");
-    const themeMenu = document.getElementById("themeMenu");
-    const dropdown = document.getElementById("themeDropdown");
-    const buttons = themeMenu.querySelectorAll("button");
-
-    function setTheme(theme) {
-      localStorage.setItem("theme", theme);
-      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-      if (theme === "dark" || (theme === "auto" && prefersDark)) {
-        html.classList.add("dark");
-        themeIcon.textContent = "🌙";
-      } else {
-        html.classList.remove("dark");
-        themeIcon.textContent = "☀️";
-      }
-
-      buttons.forEach(btn => {
-        btn.classList.toggle("active", btn.dataset.theme === theme);
-      });
-    }
-
-    buttons.forEach(btn => {
-      btn.onclick = () => {
-        setTheme(btn.dataset.theme);
-        themeMenu.style.display = "none";
-        themeToggle.setAttribute("aria-expanded", "false");
-      };
-    });
-
-    themeToggle.onclick = (e) => {
-      e.stopPropagation();
-      const isOpen = themeMenu.style.display === "block";
-      themeMenu.style.display = isOpen ? "none" : "block";
-      themeToggle.setAttribute("aria-expanded", String(!isOpen));
-    };
-
-    document.addEventListener("click", e => {
-      if (!dropdown.contains(e.target)) {
-        themeMenu.style.display = "none";
-        themeToggle.setAttribute("aria-expanded", "false");
-      }
-    });
 
     // Init
     setTheme(localStorage.getItem("theme") || "auto");
