@@ -127,64 +127,102 @@
     <div class="absolute inset-0 bg-black opacity-40"></div>
   </header>
 
-  <main class="container mx-auto px-4 py-10">
-    <div class="carousel-container">
-      <button class="carousel-button prev" onclick="scrollSlide(-1)">&#10094;</button>
-      <div class="carousel-track" id="carouselTrack">
-        <div class="carousel-card">
-          <img src="images/tour-guide-images/Taipei 101.png" alt="Taipei 101 skyscraper">
-          <h3 class="text-2xl font-bold mb-2">Taipei 101</h3>
-          <p>Once the world’s tallest building, Taipei 101 is a symbol of modern Taiwan. Its bamboo-inspired design offers panoramic views from its observation deck.</p>
-        </div>
-        <div class="carousel-card">
-          <img src="images/tour-guide-images/Taroko Gorge.png" alt="Taroko Gorge view">
-          <h3 class="text-2xl font-bold mb-2">Taroko Gorge</h3>
-          <p>Famous for its dramatic marble cliffs, Taroko Gorge is a breathtaking canyon with hiking trails and scenic beauty in every direction.</p>
-        </div>
-        <div class="carousel-card">
-          <img src="images/tour-guide-images/Chiang Kai-shek Memorial Hall.png" alt="Chiang Kai-shek Memorial">
-          <h3 class="text-2xl font-bold mb-2">Chiang Kai-shek Memorial Hall</h3>
-          <p>This landmark honors Taiwan’s former president and is a cultural site featuring a museum, plaza, and ceremonial guards.</p>
-        </div>
-        <div class="carousel-card">
-          <img src="images/tour-guide-images/Beef Noodle Soup.png" alt="Beef Noodle Soup">
-          <h3 class="text-2xl font-bold mb-2">Beef Noodle Soup</h3>
-          <p>A beloved local dish, beef noodle soup features tender meat, noodles, and rich broth. It’s a staple across Taiwan’s food culture.</p>
-        </div>
-        <div class="carousel-card">
-          <img src="images/tour-guide-images/Pineapple Cakes.png" alt="Pineapple Cakes">
-          <h3 class="text-2xl font-bold mb-2">Pineapple Cakes</h3>
-          <p>These sweet pastries are a symbol of good luck in Taiwan. They’re often gifted and are a popular souvenir among tourists.</p>
-        </div>
-        <div class="carousel-card">
-          <img src="images/tour-guide-images/Pingxi Sky Lantern Festival.png" alt="Pingxi Sky Lantern Festival">
-          <h3 class="text-2xl font-bold mb-2">Pingxi Sky Lantern Festival</h3>
-          <p>During this festival, people release lanterns into the sky with wishes written on them, creating a magical and spiritual atmosphere.</p>
-        </div>
-        <div class="carousel-card">
-          <img src="images/tour-guide-images/Dragon Boat Festival.png" alt="Dragon Boat Festival">
-          <h3 class="text-2xl font-bold mb-2">Dragon Boat Festival</h3>
-          <p>Celebrated with thrilling boat races and rice dumplings (zongzi), this festival honors loyalty and tradition each summer.</p>
-        </div>
-        <div class="carousel-card">
-          <img src="images/tour-guide-images/Alishan Forest Railway.png" alt="Alishan Forest Railway">
-          <h3 class="text-2xl font-bold mb-2">Alishan Forest Railway</h3>
-          <p>This scenic mountain train winds through cloud forests and tea plantations, offering unforgettable views of Taiwan’s interior.</p>
-        </div>
-        <div class="carousel-card">
-          <img src="images/tour-guide-images/Shilin Night Market.png" alt="Shilin Night Market">
-          <h3 class="text-2xl font-bold mb-2">Shilin Night Market</h3>
-          <p>One of the largest and most vibrant night markets in Taiwan, known for street food, games, and souvenirs.</p>
-        </div>
-        <div class="carousel-card">
-          <img src="images/tour-guide-images/Sun Moon Lake Cycling.png" alt="Sun Moon Lake">
-          <h3 class="text-2xl font-bold mb-2">Sun Moon Lake Cycling</h3>
-          <p>Cycle around Taiwan’s scenic Sun Moon Lake, surrounded by temples, mountains, and serene waters.</p>
-        </div>
+<main class="container mx-auto px-6 py-12 space-y-10 dark text-white bg-gray-900">
+  <h2 class="text-4xl font-bold text-yellow-300 text-center">Taiwan’s Historical Timeline</h2>
+  <p class="text-center text-lg text-gray-300 max-w-2xl mx-auto mb-10">Explore the turning points in Taiwan’s past, from early settlement to modern democracy.</p>
+
+  <div class="flex flex-col space-y-8">
+    <!-- Indigenous Peoples -->
+    <section class="bg-gray-800 rounded-xl p-6 flex flex-col md:flex-row gap-6 items-center">
+      <img src="images/historian-images/Indigenous%20Peoples%20Settlement.png" alt="Indigenous Peoples" class="w-full max-w-xs rounded-lg" />
+      <div>
+        <h3 class="text-2xl font-bold text-yellow-300 mb-2">Indigenous Settlement</h3>
+        <p>Taiwan’s earliest settlers were Austronesian-speaking Indigenous tribes, who arrived over 6,000 years ago. Their unique languages, oral traditions, and spiritual practices still echo in Taiwan’s cultural identity today.</p>
       </div>
-      <button class="carousel-button next" onclick="scrollSlide(1)">&#10095;</button>
-    </div>
-  </main>
+    </section>
+
+    <!-- Dutch and Spanish -->
+    <section class="bg-gray-800 rounded-xl p-6 flex flex-col md:flex-row gap-6 items-center">
+      <img src="images/historian-images/Dutch%20and%20Spanish%20Colonization.png" alt="Dutch and Spanish Colonization" class="w-full max-w-xs rounded-lg" />
+      <div>
+        <h3 class="text-2xl font-bold text-yellow-300 mb-2">Dutch and Spanish Colonization</h3>
+        <p>In the 1600s, the Dutch and Spanish established trading posts and fortresses on Taiwan. While short-lived, their rule introduced Christianity and maritime trade routes that shaped Taiwan’s role in global commerce.</p>
+      </div>
+    </section>
+
+    <!-- Koxinga -->
+    <section class="bg-gray-800 rounded-xl p-6 flex flex-col md:flex-row gap-6 items-center">
+      <img src="images/historian-images/Koxinga%20Takes%20Taiwan.png" alt="Koxinga Takes Taiwan" class="w-full max-w-xs rounded-lg" />
+      <div>
+        <h3 class="text-2xl font-bold text-yellow-300 mb-2">Koxinga Takes Taiwan (1662)</h3>
+        <p>In 1662, Ming loyalist Zheng Chenggong (Koxinga) expelled the Dutch and established a Chinese stronghold in Taiwan. His rule marked the beginning of lasting Han Chinese cultural influence.</p>
+      </div>
+    </section>
+
+    <!-- Qing Rule -->
+    <section class="bg-gray-800 rounded-xl p-6 flex flex-col md:flex-row gap-6 items-center">
+      <img src="images/historian-images/Qing%20Dynasty%20Rule%20Begins.png" alt="Qing Rule" class="w-full max-w-xs rounded-lg" />
+      <div>
+        <h3 class="text-2xl font-bold text-yellow-300 mb-2">Qing Dynasty Rule (1683)</h3>
+        <p>The Qing Empire annexed Taiwan in 1683, integrating it as a prefecture of Fujian Province. Waves of Han Chinese immigrants settled the island, farming and developing coastal cities.</p>
+      </div>
+    </section>
+
+    <!-- Japanese Colonial Period -->
+    <section class="bg-gray-800 rounded-xl p-6 flex flex-col md:flex-row gap-6 items-center">
+      <img src="images/historian-images/Japanese%20Colonial%20Period.png" alt="Japanese Colonial Period" class="w-full max-w-xs rounded-lg" />
+      <div>
+        <h3 class="text-2xl font-bold text-yellow-300 mb-2">Japanese Rule (1895–1945)</h3>
+        <p>Following the Treaty of Shimonoseki in 1895, Japan ruled Taiwan for 50 years. Though repressive, Japan built modern infrastructure, schools, railroads, and industries still visible today.</p>
+      </div>
+    </section>
+
+    <!-- 228 Incident -->
+    <section class="bg-gray-800 rounded-xl p-6 flex flex-col md:flex-row gap-6 items-center">
+      <img src="images/historian-images/228%20Incident.png" alt="228 Incident" class="w-full max-w-xs rounded-lg" />
+      <div>
+        <h3 class="text-2xl font-bold text-yellow-300 mb-2">228 Incident (1947)</h3>
+        <p>On February 28, 1947, protests over police brutality escalated into a violent crackdown by the Kuomintang (KMT). Thousands were killed, and the event became a symbol of suppressed freedom.</p>
+      </div>
+    </section>
+
+    <!-- Martial Law Imposed -->
+    <section class="bg-gray-800 rounded-xl p-6 flex flex-col md:flex-row gap-6 items-center">
+      <img src="images/historian-images/Martial%20Law%20Imposed.png" alt="Martial Law Begins" class="w-full max-w-xs rounded-lg" />
+      <div>
+        <h3 class="text-2xl font-bold text-yellow-300 mb-2">Martial Law Imposed (1949)</h3>
+        <p>In 1949, after fleeing China, the KMT imposed martial law on Taiwan. Civil liberties were suspended, dissent was punished, and one-party rule lasted for nearly four decades.</p>
+      </div>
+    </section>
+
+    <!-- Martial Law Lifted -->
+    <section class="bg-gray-800 rounded-xl p-6 flex flex-col md:flex-row gap-6 items-center">
+      <img src="images/historian-images/Martial%20Law%20Lifted.png" alt="Martial Law Lifted" class="w-full max-w-xs rounded-lg" />
+      <div>
+        <h3 class="text-2xl font-bold text-yellow-300 mb-2">Martial Law Lifted (1987)</h3>
+        <p>In 1987, martial law was lifted, opening the path to democracy. New political parties, social movements, and press freedom began reshaping the island’s future.</p>
+      </div>
+    </section>
+
+    <!-- First Democratic Election -->
+    <section class="bg-gray-800 rounded-xl p-6 flex flex-col md:flex-row gap-6 items-center">
+      <img src="images/historian-images/First%20Democratic%20Election.png" alt="First Democratic Election" class="w-full max-w-xs rounded-lg" />
+      <div>
+        <h3 class="text-2xl font-bold text-yellow-300 mb-2">First Democratic Election (1996)</h3>
+        <p>In 1996, Taiwan held its first direct presidential election. It marked a major milestone in democratization, with peaceful voting and widespread international recognition.</p>
+      </div>
+    </section>
+
+    <!-- Modern Democratic Taiwan -->
+    <section class="bg-gray-800 rounded-xl p-6 flex flex-col md:flex-row gap-6 items-center">
+      <img src="images/historian-images/Modern%20Democratic%20Taiwan.png" alt="Modern Taiwan" class="w-full max-w-xs rounded-lg" />
+      <div>
+        <h3 class="text-2xl font-bold text-yellow-300 mb-2">Modern Democratic Taiwan</h3>
+        <p>Today, Taiwan is a vibrant democracy known for its technology, education, and strong civic participation. It remains a beacon of progress in East Asia with a unique global presence.</p>
+      </div>
+    </section>
+  </div>
+</main>
 
   <!-- Footer -->
   <footer class="bg-gray-900 text-white text-center py-6">
